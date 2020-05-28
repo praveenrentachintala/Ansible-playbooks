@@ -1,0 +1,22 @@
+COPY
+
+---
+- hosts: Test
+  tasks:
+  - name: copy files
+    copy:
+       src: /home/praveen/fetched/slave1@172.31.19.124/var/log/auth.log
+       dest: /home/slave1
+    copy:
+       src: /home/praveen/fetched/slave2@172.31.20.164/var/log/auth.log
+       dest: /home/slave2
+
+FETCH
+
+---
+-  hosts: Test
+   tasks:
+    - name: Fetch files
+      fetch:
+       src: /var/log/auth.log
+       dest: /home/praveen/fetched
